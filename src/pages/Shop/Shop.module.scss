@@ -1,0 +1,165 @@
+@use '../../static/scss/global';
+
+.Shop {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    &__header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 20;
+        background-color: #212121CC;
+        width: 100%;
+        height: 70px;
+        display: flex;
+        justify-content: space-around;
+        flex: 1 0 auto;
+        & img {
+            height: 35px;
+            margin-top: 18px;
+        }
+        & .active {
+            color: transparent;
+        }
+        &__cart {
+            display: flex;
+            color: #ADACAC;
+            & p {
+                margin: 24px 9px;
+                font-size: 24px;
+            }
+        }
+    }
+    &__banner {
+        width: 100%;
+        height: 590px;
+        background: url("../../static/img/banner.png") 50% 50%;
+        background-size: cover;
+        padding: 150px 190px;
+    }
+    &__heading {
+        font-size: 40px;
+        line-height: 48px;
+        color: #FFFFFF;
+        width: 60%;
+    }
+    &__subheading {
+        font-size: 19px;
+        line-height: 23px;
+        color: #FFFFFF;
+        width: 60%;
+        margin-top: 24px;
+    }
+    &__Nav {
+        width: 60%;
+        display: flex;
+        justify-content: space-between;
+        margin: 60px auto;
+        color: #ADACAC;
+        &__btn {
+            flex-basis: 24%;
+            text-align: center;
+            cursor: pointer;
+            color: #ADACAC;
+            &:hover {
+                color: #FF0000;
+            }
+            & p {
+                margin-top: 30px;
+            }
+        }
+    }
+    &__categories {
+        flex: 1 0 auto;
+        width: 34%;
+        margin: 30px auto;
+        text-transform: uppercase;
+        font-size: 17px;
+        line-height: 42px;
+        color: #ADACAC;
+        & li {
+            display: inline-block;
+            cursor: pointer;
+            &:hover {
+                color: #FF0000;
+            }
+        }
+        & ul {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+    &__content {
+        flex: 1 0 auto;
+        width: 83%;
+        margin: 80px auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(23%, 1fr));
+        grid-gap: 25px;
+        grid-auto-rows: 490px;
+    }
+    &__footer {
+        background-color: #272727;
+        color:#FFFFFF;
+        font-size: 12px;
+        line-height: 21px;
+        padding: 32px 0px 32px 9%;
+        flex: 0 0 auto;
+    }
+    @media all and (max-width: 800px) {
+        &__banner {
+            padding: 100px 100px;
+            height: 390px;
+        }
+        &__heading {
+            font-size: 26px;
+            line-height: 20px;
+        }
+        &__subheading {
+            font-size: 16px;
+            line-height: 16px;
+        }
+        &__Nav {
+            margin: 30px auto;
+            width: 80%;
+        }
+        &__categories {
+            margin: 15px auto;
+            width: 40%;
+        }
+        &__content {
+            margin: 40px auto;
+            grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
+            grid-auto-rows: 390px;
+        }
+    }
+    @media all and (max-width: 560px) {
+        &__banner {
+            padding: 100px 60px;
+        }
+        &__Nav__btn p {
+            font-size: 12px;
+        }
+        &__categories {
+            font-size: 14px;
+            width: 70%;
+        }
+        &__header__cart p {
+            font-size: 16px;
+        }
+    }
+    @media all and (max-width: 460px) {
+        &__content {
+            grid-template-columns: repeat(auto-fill, minmax(70%, 1fr));
+            grid-auto-rows: 420px;
+        }
+    }
+}
+.sort {
+    color: #FFFFFF;
+    text-decoration: #FF0000 underline;
+}
+.active p {
+    color: #FF0000;
+}

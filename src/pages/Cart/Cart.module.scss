@@ -1,0 +1,190 @@
+@use '../../static/scss/global';
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+header {
+    flex: 1 0 auto;
+}
+main {
+    flex: 1 0 auto;
+}
+.Cart {
+    &__header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        background-color: #212121CC;
+        width: 100%;
+        height: 70px;
+        display: flex;
+        justify-content: space-around;
+        & img {
+            height: 35px;
+            margin-top: 18px;
+        }
+    }
+    &__heading {
+        text-transform: uppercase;
+        text-align: center;
+        color: #FFFFFF;
+        font-size: 32px;
+        line-height: 38.4px;
+        margin: 100px 0 30px;
+    }
+    &__list {
+        background-color: #303030;
+        width: 65%;
+        margin: 30px auto;
+        border-radius: 15px;
+        color: #FFFFFF;
+        font-size: 16px;
+        line-height: 19.5px;
+        &__price {
+            background-color: #232323;
+            text-align: right;
+            padding: 26px;
+            height: 100px;
+            border-radius: 0 0 15px 15px;
+            color: #ADACAC;
+            &__total {
+                font-size: 24px;
+                line-height: 29px;
+                color: #FFFFFF;
+            }
+        }
+    }
+    &__form {
+        background-color: #232323;
+        color: #ADACAC;
+        width: 65%;
+        border-radius: 15px;
+        padding: 60px 40px;
+        margin: 0 auto 50px;
+        & form {
+            flex-basis: 50%;
+        }
+        &__heading {
+            text-transform: uppercase;
+            color: #FFFFFF;
+        }
+        &__content {
+            display: flex;
+            justify-content: space-between;
+            &__input {
+                background-color: #303030;
+                width: 100%;
+                border-radius: 5px;
+                padding: 20px 15px;
+                margin-top: 30px;
+                & input {
+                    border: none;
+                    border-bottom: 2px solid #828282;
+                    font-size: 16px;
+                    line-height: 19.5px;
+                    background-color: #303030;
+                    width: 100%;
+                    color: #828282;
+                }
+            }
+        }
+        &__confirm {
+            flex-basis: 45%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            font-size: 14px;
+            line-height: 19.6px;
+            & a {
+                color: #ED0C0C;
+            }
+            & input {
+                background-color: #C80000;
+                width: 100%;
+                border-radius: 27px;
+                color: #FFFFFF;
+                padding: 16px 34px;
+                margin-top: 15px;
+                border: none;
+            }
+        }
+    }
+    &__footer {
+        background-color: #272727;
+        color:#FFFFFF;
+        font-size: 12px;
+        line-height: 21px;
+        padding: 32px 0px 32px 9%;
+        width: 100%;
+        flex: 0 0 auto;
+    }
+}
+
+.Order {
+    &__info {
+        background-color: #303030;
+        width: 65%;
+        margin: 30px auto;
+        border-radius: 15px;
+        color: #FFFFFF;
+        font-size: 20px;
+        line-height: 19.5px;
+        padding: 10px;
+        &__heading {
+            text-transform: uppercase;
+            text-align: center;
+            color: #FFFFFF;
+            font-size: 32px;
+            line-height: 38.4px;
+        }
+        & p {
+            padding: 10px;
+        }
+        & ul {
+            padding-left: 55px;
+        }
+        & li {
+            list-style-type: circle;
+            padding: 10px;
+        }
+        & span {
+            text-decoration: underline;
+        }
+    }
+}
+
+@media all and (max-width: 800px) {
+    .Cart {
+        &__list {
+            width: 80%;
+        }
+        &__form {
+            padding: 20px 15px;
+            width: 80%;
+            &__confirm {
+                flex-basis: 30%;
+                font-size: 11px;
+                line-height: 12px;
+            }
+            & form {
+                flex-basis: 50%;
+            }
+        }
+    }
+    .Order__info {
+        font-size: 14px;
+        line-height: 12px;
+        width: 80%;
+        &__heading {
+            font-size: 26px;
+        }
+    }
+}
+@media all and (max-width: 560px) {
+    .Cart__form__content {
+        flex-direction: column;
+    }
+}
