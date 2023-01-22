@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { CSSTransition,TransitionGroup } from 'react-transition-group';
@@ -12,27 +12,30 @@ const Cart = () => {
     const totalPrice = useSelector((state) => state.itemReducer.totalPrice);
     const [content, setContent] = useState('cart');
     const [orderInfo, setOrderInfo] = useState('');
+    const inputName = useRef('');
+    const inputPhone = useRef('');
+    const inputEmail = useRef('');
     const clean = () => {if (totalPrice === 0) dispatch(cleanCart())};
     const sendInfoToServer = () => {
         const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
         const PHONE_REGEXP = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/iu;
-        if (this.inputName.current.value === "" || this.inputPhone.current.value === "" || this.inputEmail.current.value === "") {
-            alert("Вы не ввели данные!");
-        } else if (!EMAIL_REGEXP.test(this.inputEmail.current.value)) {
-            alert("Неверно указан email!");
-        } else if (!PHONE_REGEXP.test(this.inputPhone.current.value)) {
-            alert("Неверно указан номер телефона!");
+        if (inputName.current.value === '' || inputPhone.current.value === '' || inputEmail.current.value === '') {
+            alert('Вы не ввели данные!');
+        } else if (!EMAIL_REGEXP.test(inputEmail.current.value)) {
+            alert('Неверно указан email!');
+        } else if (!PHONE_REGEXP.test(inputPhone.current.value)) {
+            alert('Неверно указан номер телефона!');
         } else if (totalPrice === 0) {
-            alert("В корзине нет товаров");
+            alert('В корзине нет товаров');
         } else {
             let info = {
-                name: this.inputName.current.value,
-                phone: this.inputPhone.current.value,
-                email: this.inputEmail.current.value,
+                name: inputName.current.value,
+                phone: inputPhone.current.value,
+                email: inputEmail.current.value,
                 items: [...items],
             }
-            let user = info.email.split("@")[0] + Math.floor(Math.random() * 1000);
-            if (user.includes(".")) user = user.replace(".", "_");
+            let user = info.email.split('@')[0] + Math.floor(Math.random() * 1000);
+            if (user.includes('.')) user = user.replace('.', '_');
             setContent('loader');
             dispatch(cleanCart());
             sendUserInfo(info, user);
@@ -117,13 +120,13 @@ const Cart = () => {
                             <div className={styles.Cart__form__content}>
                                 <form>
                                     <div className={styles.Cart__form__content__input}>
-                                        <input type='text' defaultValue='' placeholder='Имя Фамилия' />
+                                        <input ref={inputName} type='text' defaultValue='' placeholder='Имя Фамилия' />
                                     </div>
                                     <div className={styles.Cart__form__content__input}>
-                                        <input type='tel' defaultValue='' placeholder='+7(___)___-__-__' />
+                                        <input ref={inputPhone} type='tel' defaultValue='' placeholder='+7(___)___-__-__' />
                                     </div>
                                     <div className={styles.Cart__form__content__input}>
-                                        <input type='email' defaultValue='' placeholder='Ваша почта' />
+                                        <input ref={inputEmail} type='email' defaultValue='' placeholder='Ваша почта' />
                                     </div>
                                 </form>
                                 <div className={styles.Cart__form__confirm}>

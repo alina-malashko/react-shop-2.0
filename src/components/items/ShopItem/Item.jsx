@@ -9,15 +9,11 @@ const Item = (props) => {
     const [count, setCount] = useState(props.counter);
     const [clicked, setClicked] = useState(props.clicked);
     const rememberClicked = (id, counter) => {
-        console.log(clickedProducts)
         let clickedObj = {...clickedProducts, id: id, counter: counter};
-        console.log(clickedObj)
         dispatch(remember(clickedObj));
     };
     const countPrice = (event) => {
-        console.log(count)
         let counter = count + 1;
-        console.log(counter)
         rememberClicked(props.item.id, counter);
         setClicked(true);
         setCount(counter);
@@ -27,7 +23,7 @@ const Item = (props) => {
             name: props.item.name,
             price: props.item.price,
             mark: props.item.mark,
-            counter: count,
+            counter: counter,
             clicked: clicked
         };
         dispatch(addItem(item));
